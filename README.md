@@ -74,9 +74,9 @@ choco install firefox-dev --pre
 
 ### configure git
 
-git config --global user.name DiguyaDeveloper
+git config --global user.name "username"
 
-git config --global user.email diegocecconcwb@outlook.com
+git config --global user.email "email"
 
 ### Check config 
 
