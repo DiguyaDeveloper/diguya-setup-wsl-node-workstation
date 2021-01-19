@@ -78,16 +78,31 @@ git config --global user.name "username"
 
 git config --global user.email "email"
 
-### Check config 
+## Check config 
 
 git config user.name
 git config user.email
 
-## Install angular CLI
+# Install angular CLI
+
+
+npm install -g npm 
 
 npm install -g @angular/cli
 
-### Config version node 
+## Config version node 
 
 nvm install 10.9.0
 nvm use 10.9.0
+
+## Instal Discord
+
+choco install discord
+
+## Install Slack
+
+choco install slack
+
+## Config aux to npm
+
+npm config set legacy-peer-deps true
