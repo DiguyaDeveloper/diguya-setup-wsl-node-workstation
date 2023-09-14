@@ -1,108 +1,76 @@
-# my-workspace-windows
+# Configurando um ambiente Node.js com Windows Subsystem for Linux (WSL) e terminal ZSH
 
-## Install Chocolatey
+Este guia irá ajudá-lo a configurar um ambiente de desenvolvimento Node.js no Windows usando o Windows Subsystem for Linux (WSL) e o terminal ZSH.
 
-### Run
+## Instale o WSL
 
-Get-ExecutionPolicy
+Primeiro, instale o WSL com as seguintes etapas:
 
-### If it returns Restricted, then run 
+```
+wsl --install
+wsl --install -d Ubuntu
+wsl --set-default-version 2
+```
 
-Set-ExecutionPolicy AllSigned 
+## Configure o .wslconfig
 
-### or 
+Crie um arquivo chamado `.wslconfig` em `C:\Users\<seu-usuário>` e adicione o seguinte conteúdo para melhorar os limites de desempenho:
 
-Set-ExecutionPolicy Bypass -Scope Process
+```
+[wsl2]
+memory=8GB
+processors=4
+swap=2GB
+```
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+## Instale o ZSH e o Oh My Zsh
 
-## Install Node
+Instale o ZSH e o Oh My Zsh para melhorar sua experiência com o terminal:
 
-choco install nodejs
+```
+sudo apt update
+sudo apt install zsh
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
 
-## Install Git
+## Abra o ZSH
 
-choco install git.install
+Abra o arquivo `~/.zshrc` no Visual Studio Code ou seu editor de escolha para configurar o tema:
 
-## Install VS Code
+```
+code ~/.zshrc
+```
 
-choco install vscode
+## Configure um tema no ZSH
 
-## Install Dotnet
+Dentro do arquivo `~/.zshrc`, atualize a linha a seguir para definir um tema. Por exemplo:
 
-choco install dotnetcore-sdk
+```
+ZSH_THEME="crcandy"
+```
 
-## Install Dotnet 2.1.401
+## Instale o NVM (Node Version Manager)
 
-choco install dotnetcore-sdk --version=2.1.401
+Use o seguinte comando para instalar o NVM:
 
-## Install Dbeaver
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
 
-choco install dbeaver
+## Instale a versão estável do Node.js
 
-## Install sourcetree
+Instale a versão estável mais recente do Node.js com o NVM:
 
-choco install sourcetree
+```
+nvm install stable
+```
 
+## Instale o NPM (Node Package Manager)
 
-## Install NVM
+Finalmente, instale o NPM globalmente:
 
-choco install nvm
+```
+npm install -g npm
+```
 
-
-## Install docker
-
-choco install docker
-
-## Install Chrome
-
-choco install googlechrome
-
-## Install firefox
-
-choco install firefox
-
-## Install firefox dev
-
-choco install firefox-dev --pre 
-
-
-################### 
-
-
-## After restart powershell
-
-### configure git
-
-git config --global user.name "username"
-
-git config --global user.email "email"
-
-## Check config 
-
-git config user.name
-git config user.email
-
-# Install angular CLI
-
-
-npm install -g npm 
-
-npm install -g @angular/cli
-
-## Config version node 
-
-nvm install 10.9.0
-nvm use 10.9.0
-
-## Instal Discord
-
-choco install discord
-
-## Install Slack
-
-choco install slack
-
-## Config aux to npm
-
-npm config set legacy-peer-deps true
+Agora você tem um ambiente de desenvolvimento Node.js configurado no Windows usando o WSL e o terminal ZSH. Você pode começar a desenvolver aplicativos Node.js com facilidade. Certifique-se de que todas as etapas foram concluídas com sucesso e que seu ambiente está funcionando corretamente.
